@@ -1,35 +1,43 @@
 import discord
 from discord.ext import commands
-import logging
+import random
 
-logging.basicConfig(level=logging.INFO)
-logging.basicConfig(level=logging.CRITICAL)
-logging.basicConfig(level=logging.ERROR)
+def generate():
+    str = random.choice(part1Text) + random.choice(part2Text) + random.choice(part3Text) + random.choice(part4Text)
+    print (str)
 
 client = discord.Client()
 
+part1Text = ['Герои пришли в ',"Герои ушли от "]
+part2Text = ["таверны ","шахты "]
+part3Text = ["и перед ними открылся странный пейзаж ","и почуствовали облегчение "]
+part4Text = ["но они хотели отдохнуть.","но они устали."]
+
+helloWords = ['hi','hello']
+
 @client.event
 async def on_ready():
-    print('We have logged in as {0.user}'.format(client))
+    print('Bot is working')
+    generate()
 
 @client.event
 async def on_message(message):
     if message.author == client.user:
-        return
+        return await message.channel.send('Hello')
 
-    if message.content.startswith('hello'):
-        await message.channel.send((f'{message.author.mention}Hello!'))
+    msg = message.content.lower()
+    msg_list = msg.split
 
-    if message.content.startswith('.'):
-        await message.channel.send('')
+    if len(list(set(msg_list + helloWords))) < len(msg_list) + len(helloWords):
+        await message.channel.send('Hello')
 
-    if message.content.startswith('.'):
-        await message.channel.send('')
+    if message.content.startswith('Hello'):
+        await message.channel.send(f'Hello!{message.author.mention}')
 
-    if message.content.startswith('.'):
-        await message.channel.send('')
+    if message.content.startswith('Help'):
+        await message.channel.send('Commands:')
 
-    if message.content.startswith('.'):
-        await message.channel.send('')
+    if message.content.startswith('Bye'):
+        await message.channel.send('Bye')
 
-client.run('OTExMjI4MTAwODU4MjM2OTQ5.YZeVTQ.mmdgBqCdiDzFJRZdyK__T9Ud78Q')
+client.run('')

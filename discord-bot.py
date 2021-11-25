@@ -1,5 +1,5 @@
 import discord
-from discord.ext import commands
+##from discord.ext import commands
 import random
 
 # Генератор сценариев
@@ -35,7 +35,6 @@ def split_strip(message):
         list.append(str)
     return list
 
-
 client = discord.Client()
 
 # Лист ресурсов
@@ -47,7 +46,7 @@ part4Text_raw = ["однако они устали и хотели отдохн�
 helloWords = ["hi", "hello", 'privet', 'привет']
 byeWords = ['bye', 'goodbye', 'пока', 'poka']
 helpWords = ['help', 'commands', 'помощь', 'команды']
-startWords = ['!начать', '!start']
+startWords = ['!начать', '!start', '!generate', '!сгенерировать']
 
 # Debug
 @client.event
@@ -97,6 +96,5 @@ async def on_message(message):
     for s in listStart:
         if s in startWords:
             await message.channel.send(generate())
-
 
 client.run('')

@@ -109,4 +109,4 @@ async def on_message(message):
         if s in startWords:
             await message.channel.send(generate())
 
-client.run('OTExMjcwNjcyMDc0OTQwNDM2.YZe88g.j8jglXj-wvxwatHOiX4MU1HdMsw')
+client.run('')

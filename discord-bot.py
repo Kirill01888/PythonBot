@@ -21,7 +21,6 @@ def generate():
         part3Text = part3Text_raw[1]
 
     str = part1Text + part2Text + part3Text + part4Text
-    print(str)
 
     return (str)
 
@@ -52,7 +51,7 @@ startWords = ['!начать', '!start', '!generate', '!сгенерироват
 @client.event
 async def on_ready():
     print('Bot is working')
-    generate()
+    print(generate())
 
 # Определитель слов (Часть 2)
 @client.event

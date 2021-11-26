@@ -1,7 +1,5 @@
-import asyncio
 import discord
 import random
-##from discord.ext import commands
 
 # Генератор сценариев
 def generate():
@@ -22,6 +20,18 @@ def generate():
     if part4Text == part4Text_raw[2]:
         part3Text = part3Text_raw[1]
 
+    if part1Text == part1Text_raw[3]:
+        part2Text = part2Text_raw[random.randint(6, 7)]
+        part3Text = part3Text_raw[random.randint(0, 4)]
+
+    if part3Text == part3Text_raw[2 or 4]:
+        part4Text = part4Text_raw[random.randint(3, 4)]
+
+    if part1Text == part1Text_raw[5]:
+        part2Text = part2Text_raw[12]
+        part3Text = part3Text_raw[5]
+        part4Text = part4Text_raw[5]
+
     str = part1Text + part2Text + part3Text + part4Text
 
     return (str)
@@ -39,21 +49,14 @@ def split_strip(message):
 client = discord.Client()
 
 # Лист ресурсов
-part1Text_raw = ["Герои пришли в ", "Герои ушли от ", "Герои направились на "]
-part2Text_raw = ["таверны ", "шахты ", "север ", "восток ", "юг ", "запад "]
-part3Text_raw = ["и перед ними открылся странный пейзаж, ", "и почуствовали облегчение, "]
-part4Text_raw = ["однако они устали и хотели отдохнуть.", "он их удивил.", "хотя раслабляться было рано."]
+part1Text_raw = ["Герои пришли в ", "Герои ушли от ", "Герои направились на ", "Герои спустились в ", "Герои поднялись на ", "Герои "]
+part2Text_raw = ["таверны ", "шахты ", "север ", "восток ", "юг ", "запад ", "пещеру ", "расщелину ", "гору ", "холм ", "дерево ", "*ОГРОМНЫЙ* камень ", "окунулись в озеро, "]
+part3Text_raw = ["и перед ними открылся странный пейзаж, ", "и почуствовали облегчение, ", "и наткулись на ", "и ничего не обнаружили.", "и увидели ", "крохотным пятнышком погружаясь всё глуже и глубже, "]
+part4Text_raw = ["однако они устали и хотели отдохнуть.", "он их удивил.", "хотя раслабляться было рано.", "монстров.", "страшные вещи...", "но так и никогда не достигнув дна."]
 
 helloWords = ["hi", "hello", 'privet', 'привет']
 byeWords = ['bye', 'goodbye', 'пока', 'poka']
-#helpWords = ['!help', '!commands', '!помощь', '!команды']
 startWords = ['!начать', '!start', '!generate', '!сгенерировать']
-
-# Debug
-# @client.event
-# async def on_ready():
-#     print('Bot is working')
-#     print(generate())
 
 # Определитель слов (Часть 2)
 @client.event
@@ -64,7 +67,6 @@ async def on_message(message):
     msg = message.content.lower()
 
     listHello = split_strip(msg)
-    #listHelp = split_strip(msg)
     listBye = split_strip(msg)
     listStart = split_strip(msg)
 
@@ -77,22 +79,6 @@ async def on_message(message):
                 await message.channel.send(f'Privet, {message.author.mention}!')
             else:
                 await message.channel.send(f'Hello, {message.author.mention}!')
-
-    # Помощь
-    # for p in listHelp:
-    #     if p in helpWords:
-    #         if p == helpWords[0 or 1]:
-    #             await message.channel.send("Here's the list of commands: ")
-    #             await asyncio.sleep(0.5)
-    #             await message.channel.send("> !start, !generate - Generate the text")
-    #             await asyncio.sleep(3)
-    #             await message.channel.send("||That's all ¯\_(ツ)_/¯||")
-    #         else:
-    #             await message.channel.send("Вот список команд: ")
-    #             await asyncio.sleep(0.5)
-    #             await message.channel.send("> !начать, !сгенерировать - Сгенерировать текст")
-    #             await asyncio.sleep(3)
-    #             await message.channel.send("||Это всё ¯\_(ツ)_/¯||")
 
     # Прощание
     for b in listBye:

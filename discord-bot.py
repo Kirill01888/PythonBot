@@ -1,6 +1,7 @@
+import asyncio
 import discord
-##from discord.ext import commands
 import random
+##from discord.ext import commands
 
 # Генератор сценариев
 def generate():
@@ -9,9 +10,10 @@ def generate():
     part3Text = random.choice(part3Text_raw)
     part4Text = random.choice(part4Text_raw)
 
+    # Исправление нелогичных связей
     if part1Text == part1Text_raw[2]:
         part2Text = part2Text_raw[random.randint(2, 5)]
-    elif part1Text != part1Text_raw[2]:
+    else:
         part2Text = part2Text_raw[random.randint(0, 1)]
 
     if part3Text == part3Text_raw[1]:
@@ -79,7 +81,16 @@ async def on_message(message):
     # Помощь
     for hp in listHelp:
         if hp in helpWords:
-            await message.channel.send("Here's the list of commands: ")
+            if hp == helpWords[0 or 2]:
+                await message.channel.send("Here's the list of commands: ")
+                await message.channel.send(">!start, !generate - Generate the text")
+                await asyncio.sleep(1)
+                await message.channel.send("||That's all ¯\_(ツ)_/¯||")
+            else:
+                await message.channel.send("Вот список команд: ")
+                await message.channel.send(">!начать, !сгенерировать - Сгенерировать")
+                await asyncio.sleep(1)
+                await message.channel.send("||Это всё ¯\_(ツ)_/¯||")
 
     # Прощание
     for b in listBye:

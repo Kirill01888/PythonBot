@@ -46,7 +46,7 @@ part4Text_raw = ["однако они устали и хотели отдохн�
 
 helloWords = ["hi", "hello", 'privet', 'привет']
 byeWords = ['bye', 'goodbye', 'пока', 'poka']
-helpWords = ['help', 'commands', 'помощь', 'команды']
+helpWords = ['!help', '!commands', '!помощь', '!команды']
 startWords = ['!начать', '!start', '!generate', '!сгенерировать']
 
 # Debug

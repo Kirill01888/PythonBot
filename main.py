@@ -9,28 +9,40 @@ def generate():
     part4Text = random.choice(part4Text_raw)
 
     # Исправление нелогичных связей
-    if part1Text == part1Text_raw[2]:
-        part2Text = part2Text_raw[random.randint(2, 5)]
-    else:
-        part2Text = part2Text_raw[random.randint(0, 1)]
+    # if part1Text == part1Text_raw[2]:
+    #     part2Text = part2Text_raw[random.randint(2, 5)]
+    # else:
+    #     part2Text = part2Text_raw[random.randint(0, 1)]
+    #
+    # if part3Text == part3Text_raw[1]:
+    #     part4Text = part4Text_raw[2]
+    #
+    # if part4Text == part4Text_raw[2]:
+    #     part3Text = part3Text_raw[1]
+    #
+    # if part1Text == part1Text_raw[3]:
+    #     part2Text = part2Text_raw[random.randint(6, 7)]
+    #     part3Text = part3Text_raw[random.randint(0, 4)]
+    #
+    # if part3Text == part3Text_raw[2 or 4]:
+    #     part4Text = part4Text_raw[random.randint(3, 4)]
+    #
+    # if part1Text == part1Text_raw[5]:
+    #     part2Text = part2Text_raw[12]
+    #     part3Text = part3Text_raw[5]
+    #     part4Text = part4Text_raw[5]
 
-    if part3Text == part3Text_raw[1]:
-        part4Text = part4Text_raw[2]
-
-    if part4Text == part4Text_raw[2]:
-        part3Text = part3Text_raw[1]
-
-    if part1Text == part1Text_raw[3]:
-        part2Text = part2Text_raw[random.randint(6, 7)]
-        part3Text = part3Text_raw[random.randint(0, 4)]
-
-    if part3Text == part3Text_raw[2 or 4]:
-        part4Text = part4Text_raw[random.randint(3, 4)]
-
-    if part1Text == part1Text_raw[5]:
-        part2Text = part2Text_raw[12]
-        part3Text = part3Text_raw[5]
-        part4Text = part4Text_raw[5]
+    if part1Text == part1Text_raw[0]:
+        part2Text = part2Text_raw[random.randint(0,1)]
+        part3Text = part3Text_raw[random.randint(1,4)]
+        if part3Text == part3Text_raw[3]:
+            part4Text = part4Text_raw[3]
+        elif part3Text == part3Text_raw[4]:
+            part4Text = part4Text_raw[random.randint(3,4)]
+        elif part3Text == part3Text_raw[1]:
+            part4Text = part4Text_raw[2]
+        else:
+            part4Text = part4Text_raw[1]
 
     str = part1Text + part2Text + part3Text + part4Text
 
@@ -50,9 +62,9 @@ client = discord.Client()
 
 # Лист ресурсов
 part1Text_raw = ["Герои пришли в ", "Герои ушли от ", "Герои направились на ", "Герои спустились в ", "Герои поднялись на ", "Герои "]
-part2Text_raw = ["таверны ", "шахты ", "север ", "восток ", "юг ", "запад ", "пещеру ", "расщелину ", "гору ", "холм ", "дерево ", "*ОГРОМНЫЙ* камень ", "окунулись в озеро, "]
-part3Text_raw = ["и перед ними открылся странный пейзаж, ", "и почуствовали облегчение, ", "и наткулись на ", "и ничего не обнаружили.", "и увидели ", "крохотным пятнышком погружаясь всё глуже и глубже, "]
-part4Text_raw = ["однако они устали и хотели отдохнуть.", "он их удивил.", "хотя раслабляться было рано.", "монстров.", "страшные вещи...", "но так и никогда не достигнув дна."]
+part2Text_raw = ["шахты ", "пещеру ", "таверны ", "север ", "восток ", "юг ", "запад ", "расщелину ", "гору ", "холм ", "дерево ", "*ОГРОМНЫЙ* камень "]
+part3Text_raw = ["и перед ними открылся странный пейзаж, ", "и почуствовали облегчение, ", "и ничего не обнаружили.", "и наткулись на ", "и увидели "]
+part4Text_raw = ["он их удивил.", "однако они устали и хотели отдохнуть.", "хотя раслабляться было рано.", "монстров.", "страшные вещи..."]
 
 helloWords = ["hi", "hello", 'privet', 'привет']
 byeWords = ['bye', 'goodbye', 'пока', 'poka']

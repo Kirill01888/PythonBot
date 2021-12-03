@@ -11,12 +11,10 @@ def generate():
 # Исправление нелогичных связей
     if part1Text == part1Text_raw[2]:
         part2Text = part2Text_raw[random.randint(2, 5)]
-    else:
-        part2Text = part2Text_raw[random.randint(0, 1)]
 
-    if part1Text == part1Text_raw[3]:
-        part2Text = part2Text_raw[random.randint(6, 7)]
-        part3Text = part3Text_raw[random.randint(0, 4)]
+    # if part1Text == part1Text_raw[3]:
+    #     part2Text = part2Text_raw[random.randint(6, 7)]
+    #     part3Text = part3Text_raw[random.randint(0, 4)]
 
     if part1Text == part1Text_raw[3]:
         part2Text = part2Text_raw[7]
@@ -27,32 +25,29 @@ def generate():
     if part1Text == part1Text_raw[4]:
         part2Text = part2Text_raw[random.randint(8,11)]
 
-    if part3Text == part3Text_raw[1]:
-        part4Text = part4Text_raw[2]
-
-    if part4Text == part4Text_raw[2]:
-        part3Text = part3Text_raw[1]
-
-    if part3Text == part3Text_raw[2 or 4]:
-        part4Text = part4Text_raw[random.randint(3, 4)]
-
-    if part2Text == part2Text_raw[2]:
-        part1Text = part1Text_raw[1]
-
-    if part3Text == part3Text_raw[0]:
-        part4Text = part4Text_raw[0]
+    # if part2Text == part2Text_raw[2]:
+    #     part1Text = part1Text_raw[1]
 
     if part2Text == part2Text_raw[7]:
         part3Text = part3Text_raw[random.randint(2,4)]
 
+    if part2Text == part2Text_raw[2]:
+        part1Text = part1Text_raw[1]
+
+    if part3Text == part3Text_raw[1]:
+        part4Text = part4Text_raw[2]
+
+    if part3Text == part3Text_raw[3 or 4]:
+        part4Text = part4Text_raw[random.randint(3, 4)]
+
+    if part3Text == part3Text_raw[0]:
+        part4Text = part4Text_raw[0]
+
     if part3Text == part3Text_raw[2]:
         part4Text = ''
 
-    if part2Text == part2Text_raw[2]:
-        part1Text = part1Text_raw[3]
-
-    if part3Text == part3Text_raw[3 or 4]:
-        part4Text = part4Text_raw[random.randint(3,4)]
+    if part4Text == part4Text_raw[2]:
+        part3Text = part3Text_raw[1]
 
     str = part1Text + part2Text + part3Text + part4Text
 
@@ -79,6 +74,7 @@ part4Text_raw = ["он их удивил.", "однако они устали и
 helloWords = ["hi", "hello", 'privet', 'привет']
 byeWords = ['bye', 'goodbye', 'пока', 'poka']
 startWords = ['!начать', '!start', '!generate', '!сгенерировать']
+multistartWord = ['!multi']
 
 # Определитель слов (Часть 2)
 @client.event
@@ -91,6 +87,7 @@ async def on_message(message):
     listHello = split_strip(msg)
     listBye = split_strip(msg)
     listStart = split_strip(msg)
+    listMulti = split_strip(msg)
 
     # Приветствие
     for h in listHello:
@@ -117,4 +114,12 @@ async def on_message(message):
         if s in startWords:
             await message.channel.send(generate())
 
-client.run('OTExMjcwNjcyMDc0OTQwNDM2.YZe88g.U7SHqj-1r7qGuksrvckaDKCUtoQ')
+
+    for v in listMulti:
+        if v in multistartWord:
+            i = 0
+            while i < 10:
+                await message.channel.send(generate())
+                i = i + 1
+
+client.run('')
